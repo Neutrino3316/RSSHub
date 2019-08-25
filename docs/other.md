@@ -62,6 +62,12 @@ pageClass: routes
 
 <Route author="kt286" example="/bof/home" path="/bof/home" />
 
+## cfan
+
+### 新闻
+
+<Route author="kt286" example="/cfan/news" path="/cfan/news"/>
+
 ## checkee.info
 
 ### 美国签证 check 动态
@@ -515,6 +521,12 @@ type 为 all 时，category 参数不支持 cost 和 free
 
 <Route author="WenryXu" example="/duozhi" path="/duozhi"/>
 
+## 法律白話文運動
+
+### 最新文章
+
+<Route author="emdoe" example="/plainlaw/archives" path="/plainlaw/archives"/>
+
 ## 飞地
 
 ### 分类
@@ -849,11 +861,23 @@ type 为 all 时，category 参数不支持 cost 和 free
 
 <Route author="Andiedie" example="/d2/daily" path="/d2/daily"/>
 
+## 日本郵便
+
+### 郵便追跡サービス
+
+<Route author="tuzi3040" example="/japanpost/EJ123456789JP" path="/japanpost/:reqCode" :paramsDesc="['运单号']"/>
+
 ## 扇贝
 
 ### 打卡
 
 <Route author="DIYgod" example="/shanbay/checkin/ddwej" path="/shanbay/checkin/:id" :paramsDesc="['用户 id']" />
+
+## 上证债券信息网
+
+### 可转换公司债券公告
+
+<Route author="kt286" example="/sse/convert/beginDate=2018-08-18&endDate=2019-08-18&companyCode=603283&title=股份" path="/sse/convert/:query?" :paramsDesc="['筛选条件，见示例']"/>
 
 ## 少数派 sspai
 
@@ -1168,6 +1192,14 @@ type 为 all 时，category 参数不支持 cost 和 free
 ### 今日油价
 
 <Route author="xyqfer" example="/oilprice/shanghai" path="/oilprice/:area" :paramsDesc="['地区拼音，详见[成品油价格网](http://oil.usd-cny.com/)']"/>
+
+## 邮箱
+
+### 邮件列表
+
+> 仅支持 IMAP 协议
+
+<Route author="kt286" example="/mail/imap/rss.rsshub.app" path="/mail/imap/:email" :paramsDesc="['邮箱账号']" />
 
 ## 语雀
 

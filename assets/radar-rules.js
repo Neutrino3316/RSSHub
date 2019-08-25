@@ -371,4 +371,41 @@
             },
         ],
     },
+    'anime1.me': {
+        _name: 'Anime1',
+        '.': [
+            {
+                title: '動畫',
+                docs: 'https://docs.rsshub.app/anime.html#anime1',
+                source: '/category/:time/:name',
+                target: '/anime1/anime/:time/:name',
+            },
+            {
+                title: '搜尋',
+                docs: 'https://docs.rsshub.app/anime.html#anime1',
+                source: '/',
+                script: "({keyword: new URLSearchParams(location.search).get('s')})",
+                target: '/anime1/search/:keyword',
+                verification: (params) => params.keyword,
+            },
+        ],
+    },
+    'instagram.com': {
+        _name: 'Instagram',
+        www: [
+            {
+                title: '用户',
+                docs: 'https://docs.rsshub.app/social-media.html#instagram',
+                source: '/:id',
+                target: '/instagram/user/:id',
+                verification: (params) => params.id !== 'explore' && params.id !== 'developer',
+            },
+            {
+                title: '标签',
+                docs: 'https://docs.rsshub.app/social-media.html#instagram',
+                source: '/explore/tags/:tag',
+                target: '/instagram/tag/:tag',
+            },
+        ],
+    },
 });
