@@ -1,5 +1,6 @@
 const supertest = require('supertest');
-const { server } = require('../../lib/index');
+jest.mock('request-promise-native');
+const server = require('../../lib/index');
 const request = supertest(server);
 const Parser = require('rss-parser');
 const parser = new Parser();
@@ -59,14 +60,14 @@ describe('template', () => {
 
     it(`.json`, async () => {
         const response = await request.get('/test/1.json');
-        expect(response.status).toBe(404);
-        expect(response.text).toMatch(/RSSHub 发生了一些意外: <pre>Error: <b>JSON output had been removed/);
+        const responseXML = await request.get('/test/1.rss');
+        expect(response.text.slice(0, 50)).toEqual(responseXML.text.slice(0, 50));
     });
 
     it(`long title`, async () => {
         const response = await request.get('/test/long');
         const parsed = await parser.parseString(response.text);
-        expect(parsed.items[0].title.length).toBe(103);
+        expect(parsed.items[0].title.length).toBe(153);
     });
 
     it(`enclosure`, async () => {
